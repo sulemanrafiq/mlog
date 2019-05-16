@@ -15,7 +15,9 @@ class AdduserController extends Controller
      */
     public function index()
     {
-        return view('adduser.register');
+//        return view('adduser.register');
+        $user = User::all();
+      return view('adduser.show',compact('user'));
     }
 
     /**
@@ -25,7 +27,7 @@ class AdduserController extends Controller
      */
     public function create()
     {
-        //
+                return view('adduser.register');
     }
 
     /**
@@ -43,7 +45,8 @@ class AdduserController extends Controller
             'role_id'=>   $request->role_id
         ]);
         if($created) {
-            return view('admin');
+
+            return Redirect::route('adduser.index');
         }
         }
 
@@ -53,9 +56,10 @@ class AdduserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+//        $user = User::all();
+//        return view('adduser.show',compact('user'));
     }
 
     /**
